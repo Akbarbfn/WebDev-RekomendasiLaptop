@@ -13,7 +13,7 @@
         <td>{{ $row->rank }}</td>
         <td>{{ $row->kode_alternatif }}</td>
         <td>{{ $row->nama_alternatif }}</td>
-        <td>{{ round($row->total, 4) }}</td>
+        <td>{{ round($row->total, 3) }}</td>
     </tr>
     @endforeach
 </table>

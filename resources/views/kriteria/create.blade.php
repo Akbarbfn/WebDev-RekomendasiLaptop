@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('title', $title)
 @section('content')
-<form action="{{ url('kriteria.store') }}" method="POST">
+<form action="{{ route('kriteria.store') }}" method="POST">
 	<div class="card">
 		<div class="card-body">
 			<div class="row">

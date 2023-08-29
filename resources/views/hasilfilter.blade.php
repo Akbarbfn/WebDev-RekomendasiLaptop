@@ -135,25 +135,78 @@
 	</div>
 </form>
 
-<div class="container">
-    <div class="card-header">
-        <h3 class="card-title">{{ $juduldata }}</h3>
+    <h3 class="card-title">{{ $juduldata }}</h3>
     </div>
     <div class="card-body p-0">
         <div class="row">
+            @php $dataExists = false; $count = 0; @endphp
             @foreach($saw->rank as $key => $val)
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3 gy-4 my-4">
-                <div class="card">
-                    <a href="javascript:void(0);" onclick="showModal('{{ addslashes($alternatifs[$key]->nama_alternatif) }}', '{{ addslashes($alternatifs[$key]->keterangan) }}', '{{ asset('fotolaptop/'.$alternatifs[$key]->foto) }}', '{{ $alternatifs[$key]->harga }}')">
-                        <img src="{{ asset('fotolaptop/'.$alternatifs[$key]->foto)}}" alt="" class="card-img-top" style="width: 100%;">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title" style="height: 60px; overflow: hidden;">{{ $alternatifs[$key]->nama_alternatif }}</h5>
-                        <p class="card-text mb-2"><strong>RP. {{ $alternatifs[$key]->harga }}</strong></p>
+                <?php
+                    $x = 0;
+                    $arrhasil = array();
+                    foreach ($kriteriaku as $kriteria) {
+                        $kodealternatif = $alternatifs[$key]->kode_alternatif;
+                        $kodekriteria = $kriteria->kode_kriteria;
+
+                        $idcrisp = get_crisp_by_AK($kodealternatif, $kodekriteria);
+                        $pencarian = $arrfilter[$x];
+
+                        if ($pencarian == null) {
+                            $hasil = "benar";
+                        }
+
+                        if ($pencarian != null && $idcrisp == $pencarian) {
+                            $hasil = "benar";
+                        } else if ($pencarian == null) {
+                            $hasil = "benar";
+                        } else {
+                            $hasil = "salah";
+                        }
+
+                        array_push($arrhasil, $hasil);
+
+                        $x++;
+                    }
+
+                    $jumlahsalah = 0;
+                    for ($i = 0; $i < sizeof($arrhasil); $i++) {
+                        if ($arrhasil[$i] == "salah") {
+                            $jumlahsalah++;
+                        }
+                    }
+
+                    if ($jumlahsalah == 0) {
+                        $dataExists = true;
+                ?>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 gy-4 my-4">
+                    <div class="card">
+                        <a href="#" onclick="showModal('{{ $alternatifs[$key]->nama_alternatif }}', '{{ $alternatifs[$key]->keterangan }}', '{{ asset('fotolaptop/'.$alternatifs[$key]->foto) }}', '{{ $alternatifs[$key]->harga }}')">
+                            <img src="{{ asset('fotolaptop/'.$alternatifs[$key]->foto)}}" alt="" class="card-img-top" style="width: 100%;">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title" style="height: 60px; overflow: hidden;">{{ $alternatifs[$key]->nama_alternatif }}</h5>
+                            <p class="card-text mb-0"><strong>RP. {{ $alternatifs[$key]->harga }}</strong></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <?php
+                    $count++;
+                    if ($count % 4 == 0) {
+                        echo '</div><div class="row">';
+                    }
+                ?>
+                <?php } ?>
             @endforeach
+
+            @if (!$dataExists)
+            <div class="col-md-12">
+    <table class="table table-bordered text-center">
+        <tr>
+            <th colspan="3" style="font-size: 24px; font-weight: bold;">Laptop Tidak Tersedia</th>
+        </tr>
+    </table>
+</div>
+            @endif
         </div>
     </div>
 </div>
@@ -195,6 +248,9 @@
         border-radius: 5px;
         position: relative;
         color: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .modal-content strong {
@@ -231,8 +287,6 @@
         }
     }
 </style>
-
-
 <!-- JavaScript untuk mengatur pop-up saat gambar diklik -->
 <script>
     // Ambil elemen gambar
@@ -278,11 +332,13 @@
 </script>
 
 
-
-
      </section><!-- End About Us Section -->
+
+</div>
+         </div>
  
-  
+       </div>
+     </section><!-- End About Us Section -->
    </main><!-- End #main -->
  
    <!-- ======= Footer ======= -->

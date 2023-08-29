@@ -255,3 +255,58 @@ function get_crisp_option($kode_kriteria, $selected = '')
     }
     return $a;
 }
+
+
+function get_pencarian_option($arrfilter)
+{
+	 
+   $jumlah=sizeof($arrfilter);  
+    $a = '';
+	
+	$rows = get_results("SELECT * FROM tb_kriteria ORDER BY kode_kriteria");
+    $arr = array();
+	 $x=0;
+    foreach ($rows as $row) {
+        $kode = $row->kode_kriteria;
+		$a.="<div class='col-md-2' style='margin:5px;'>
+			<div class='form-group row'>
+						<label>".$row->nama_kriteria."</label>";
+						
+		$a.="<select name='kriteria$kode' class='form-select select2'>";
+		$a.="<option value='' selected> </option>"; 
+		$caricrisp = get_results("SELECT * FROM tb_crisp WHERE kode_kriteria='".$kode."' ORDER BY nilai ASC"); 
+		
+		 
+		foreach ($caricrisp as $crisp) {
+			$idcrisp = $crisp->id_crisp;
+			if($arrfilter[$x]==$idcrisp) {
+				$a.="<option value='".$crisp->id_crisp."' selected>".$crisp->nama_crisp."</option>";
+			} else {
+				$a.="<option value='".$crisp->id_crisp."'>".$crisp->nama_crisp."</option>";
+			}
+			
+			
+		}
+			$x++; 
+		$a.="</select>
+		</div>
+		</div>";
+    }
+	
+	
+   
+    return $a;
+}
+
+
+function get_crisp_by_AK($kodealternatif, $kodekriteria)
+{
+    $rows = get_results("SELECT * FROM tb_rel_alternatif WHERE kode_alternatif='$kodealternatif' AND kode_kriteria='$kodekriteria'");
+    $arr = array();
+    foreach ($rows as $row) {
+         $id = $row->id_crisp;
+    }
+    return $id;
+}
+
+

@@ -23,12 +23,6 @@
 						<p class="form-text text-muted">Kosongkan jika tidak ingin mengubah password.</p>
 					</div>
 					<div class="form-group">
-						<label>Level <span class="text-danger">*</span></label>
-						<select class="form-control" name="level">
-							<?= get_level_option(old('level', $row->level)) ?>
-						</select>
-					</div>
-					<div class="form-group">
 						<label>Status <span class="text-danger">*</span></label>
 						<select class="form-control" name="status_user">
 							<?= get_status_user_option(old('status_user', $row->status_user)) ?>

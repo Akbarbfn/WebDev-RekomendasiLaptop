@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name') }} | Log in</title>
+    <title>LOGIN</title>
       <link href="{{ asset('/Arsha/img/favicon.png') }}" rel="icon">
 	  
 	  
@@ -19,8 +19,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <img src="{{ asset('images/logo.png') }}" height="100" />
-            <h1 style="font-size:1em">{{ config('app.name') }}</h1>
+            <h1 style="font-size:1em"></h1>
 			<br/>
         </div>
         <!-- /.login-logo -->

@@ -116,7 +116,7 @@
             <tr>
                 <td>{{ $key }}</td>
                 @foreach($val as $k => $v)
-                <td>{{ round($v, 4) }}</td>
+                <td>{{ round($v, 3) }}</td>
                 @endforeach
             </tr>
             @endforeach
@@ -140,7 +140,7 @@
             <tr>
                 <td>{{ $key }}</td>
                 @foreach($val as $k => $v)
-                <td>{{ round($v, 4) }}</td>
+                <td>{{ round($v, 3) }}</td>
                 @endforeach
             </tr>
             @endforeach
@@ -165,7 +165,7 @@
                 <td>{{ $val }}</td>
                 <td>{{ $key }}</td>
                 <td>{{ $alternatifs[$key]->nama_alternatif }}</td>
-                <td>{{ round($saw->total[$key], 4) }}</td>
+                <td>{{ round($saw->total[$key], 3) }}</td>
             </tr>
             @endforeach
         </table>

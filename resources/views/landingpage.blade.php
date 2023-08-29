@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Aplikasi SPK Metode SAW</title>
+  <title>KANGLAPTOP.ID</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -100,46 +100,46 @@
     </div>
   </section>
 
-<div class="container">
-  <div class="row ">
-      @foreach($barangs as $barang)
-        <div class=" col-sm-8 col-md-4 col-lg-3 gy-4 my-4">
-        <div class="card" style="width: 15rem; height:33rem;">
-          <img src="{{ asset('fotolaptop/'.$barang->foto)}}" class="card-img-top" alt="image">
-          <div class="card-body">
-            <h5 class="card-title">{{ $barang->nama_alternatif }} </h5>
-            <p class="card-text">{{ $barang->keterangan}} </p>
-            <p class="card-text">RP. {{ $barang->harga}} </p>
-          <!-- <a href="/detail/{{$barang->kode_alternatif}}/" class="btn btn-primary">Detail</a> -->
-            <form action="/detail/{{$barang->kode_alternatif}}/" method="GET">
+  <div class="container">
+  <div class="row">
+    @foreach($barangs as $barang)
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3 gy-4 my-4">
+      <div class="card">
+        <img src="{{ asset('fotolaptop/'.$barang->foto)}}" class="card-img-top" alt="image">
+        <div class="card-body">
+          <h5 class="card-title" style="height: 60px; overflow: hidden;">{{ $barang->nama_alternatif }}</h5>
+          <p class="card-text"><strong>RP. {{ $barang->harga }}</strong></p>
+        </div>
+        <div class="card-footer">
+          <form action="/detail/{{$barang->kode_alternatif}}/" method="GET">
             @csrf
-            <button class="btn btn-success btn-sm">Detail</button>
-            </form>
-          </div>
+            <button class="btn btn-success btn-sm btn-detail" style="width: 100%;">Detail</button>
+          </form>
         </div>
-        </div>
-        @endforeach
+      </div>
+    </div>
+    @endforeach
+  </div>
+  <div style="text-align: center;">
+    {{$barangs->onEachSide(1)->links()}}
   </div>
 </div>
 
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
+<style>
+  .btn-detail {
+    background-color: #37517E;
+    border: none;
+  }
 
-        <div class="row">
-          <div class="col-lg-12 text-center text-lg-start">
-            <h3  class="text-center">Pengertian Laptop</h3>
-            <p class="text-center">    </p>
-		<h4  class="text-center text-warning"> 
-		Laptop diartikan sebagai sebuah perangkat komputer yang berukuran kecil dan ringan dibandingkan dengan komputer. Laptop mempunyai fungsi yang sama dengan komputer, selain itu untuk melakukan pekerjaan yang ringan hingga berat tentu saja lebih mumpuni komputer dibandingkan dengan laptop <br/>
-          </div>
-          
-        </div>
+  .btn-detail:focus,
+  .btn-detail:hover {
+    background-color: #37517E;
+    outline: none;
+  }
+</style>
 
-      </div>
-    </section><!-- End Cta Section -->
- 
-  </main><!-- End #main -->
+
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

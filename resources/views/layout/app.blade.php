@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name') }} - @yield('title')</title>
+    <title>ADMIN</title>
 
      <link href="{{ asset('/Arsha/img/favicon.png') }}" rel="icon">
 
@@ -81,8 +81,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{route('home')}}" class="brand-link">
-                <img src="{{ asset('images/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text " style="font-size:0.8em">{{ config('app.name') }}</span>
+                <img src="{{ asset('images/userr.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text " style="font-size:0.8em">HALAMAN ADMIN</span>
             </a>
 
             <!-- Sidebar -->
@@ -116,15 +116,15 @@
                with font-awesome or any other icon font library -->
                         <li class="nav-item" {{ is_hidden('home') }}>
                             <a href="{{ route('home') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-primary"></i>
+                                <i class="fa fa-home"> </i>
                                 <p>
-                                    Home
+                                     Home
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item" {{ is_hidden('user.index') }}>
                             <a href="{{ route('user.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-primary"></i>
+                                <i class="fa fa-users"> </i>
                                 <p>
                                     User
                                 </p>
@@ -132,7 +132,7 @@
                         </li>
                         <li class="nav-item" {{ is_hidden('kriteria.index') }}>
                             <a href="{{ route('kriteria.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-primary"></i>
+                                <i class="fa fa-tty"> </i>
                                 <p>
                                     Kriteria
                                 </p>
@@ -140,23 +140,24 @@
                         </li>
                         <li class="nav-item" {{ is_hidden('crisp.index') }}>
                             <a href="{{ route('crisp.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-primary"></i>
+                                <i class="fa fa-puzzle-piece"> </i>
                                 <p>
                                     Nilai Kriteria
                                 </p>
                             </a>
                         </li>
+                        
                         <li class="nav-item" {{ is_hidden('alternatif.index') }}>
                             <a href="{{ route('alternatif.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-primary"></i>
+                                <i class="fa fa-laptop"> </i>
                                 <p>
-                                    Laptop
+                                    Data Laptop
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item" {{ is_hidden('rel_alternatif.index') }}>
                             <a href="{{ route('rel_alternatif.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-primary"></i>
+                                <i class="fas fa-laptop-house"> </i>
                                 <p>
                                     Nilai Laptop
                                 </p>
@@ -164,7 +165,7 @@
                         </li>
                         <li class="nav-item" {{ is_hidden('hitung.index') }}>
                             <a href="{{ route('hitung.index') }}" class="nav-link">
-                                <i class="nav-icon far fa-circle text-primary"></i>
+                                <i class="fa fa-industry"> </i>
                                 <p>
                                     Perhitungan
                                 </p>
@@ -205,11 +206,6 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-        <footer class="main-footer d-print-none">
-           
-            <strong>Copyright &copy; {{ date('Y') }}  . </strong> All rights reserved.
-        </footer>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">

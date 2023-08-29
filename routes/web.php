@@ -55,10 +55,11 @@ Route::middleware(['auth', 'level'])->group(
 
         Route::get('/home', [HomeController::class, 'landingpage'])->name('landingpage');
         Route::get('/hasilsaw', [HomeController::class, 'hasilsaw'])->name('hasilsaw');
-        
+        Route::post('/filter', [HomeController::class, 'filter'])->name('home.filter');
 
         Route::get('/login', [UserController::class, 'loginForm'])->name('login');
         Route::post('/login', [UserController::class, 'loginAction'])->name('login.action');
 
         Route::get('/detail/{id}',[DetailController::class, 'details'])->name('details');
+
 
